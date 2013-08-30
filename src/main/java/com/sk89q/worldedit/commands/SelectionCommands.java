@@ -594,7 +594,7 @@ public class SelectionCommands {
     @CommandPermissions("worldedit.selection.size")
     public void size(CommandContext args, LocalSession session, LocalPlayer player, 
             EditSession editSession) throws WorldEditException {
-    	
+
         if (args.hasFlag('c')) {
             CuboidClipboard clipboard = session.getClipboard();
             Vector size = clipboard.getSize();
@@ -741,37 +741,54 @@ public class SelectionCommands {
             return;
         }
 
-        final String typeName = args.getString(0);
+        final String typeName = args.getString(0).toLowerCase();
         final RegionSelector oldSelector = session.getRegionSelector(world);
 
         final RegionSelector selector;
-        if (typeName.equalsIgnoreCase("cuboid")) {
+        switch (typeName) {
+        case "cuboid":
             selector = new CuboidRegionSelector(oldSelector);
             player.print("Cuboid: left click for point 1, right click for point 2");
-        } else if (typeName.equalsIgnoreCase("extend")) {
+            break;
+
+        case "extend":
             selector = new ExtendingCuboidRegionSelector(oldSelector);
             player.print("Cuboid: left click for a starting point, right click to extend");
-        } else if (typeName.equalsIgnoreCase("poly")) {
+            break;
+
+        case "poly":
             int maxPoints = we.getMaximumPolygonalPoints(player);
             selector = new Polygonal2DRegionSelector(oldSelector, maxPoints);
             player.print("2D polygon selector: Left/right click to add a point.");
             if (maxPoints > -1) {
                 player.print(maxPoints + " points maximum.");
             }
-        } else if (typeName.equalsIgnoreCase("ellipsoid")) {
+            break;
+
+        case "ellipsoid":
             selector = new EllipsoidRegionSelector(oldSelector);
             player.print("Ellipsoid selector: left click=center, right click to extend");
-        } else if (typeName.equalsIgnoreCase("sphere")) {
+            break;
+
+        case "sphere":
             selector = new SphereRegionSelector(oldSelector);
             player.print("Sphere selector: left click=center, right click to set radius");
-        } else if (typeName.equalsIgnoreCase("cyl")) {
+            break;
+
+        case "cyl":
             selector = new CylinderRegionSelector(oldSelector);
             player.print("Cylindrical selector: Left click=center, right click to extend.");
-        } else if (typeName.equalsIgnoreCase("convex") || typeName.equalsIgnoreCase("hull") || typeName.equalsIgnoreCase("polyhedron")) {
+            break;
+
+        case "convex":
+        case "hull":
+        case "polyhedron":
             int maxVertices = we.getMaximumPolyhedronPoints(player);
             selector = new ConvexPolyhedralRegionSelector(oldSelector, maxVertices);
             player.print("Convex polyhedral selector: Left click=First vertex, right click to add more.");
-        } else {
+            break;
+
+        default:
             player.printError("Only cuboid|extend|poly|ellipsoid|sphere|cyl|convex are accepted.");
             return;
         }
