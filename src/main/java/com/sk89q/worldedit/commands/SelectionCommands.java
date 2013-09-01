@@ -746,6 +746,16 @@ public class SelectionCommands {
 
         final RegionSelector selector;
         switch (typeName) {
+        case "load":
+            selector = null;
+            break;
+
+        case "save":
+            return;
+
+        case "delete":
+            return;
+
         case "cuboid":
             selector = new CuboidRegionSelector(oldSelector);
             player.print("Cuboid: left click for point 1, right click for point 2");
@@ -756,6 +766,9 @@ public class SelectionCommands {
             player.print("Cuboid: left click for a starting point, right click to extend");
             break;
 
+        case "polygon2d":
+        case "polygon":
+        case "poly2d":
         case "poly":
             int maxPoints = we.getMaximumPolygonalPoints(player);
             selector = new Polygonal2DRegionSelector(oldSelector, maxPoints);
@@ -766,6 +779,7 @@ public class SelectionCommands {
             break;
 
         case "ellipsoid":
+        case "egg":
             selector = new EllipsoidRegionSelector(oldSelector);
             player.print("Ellipsoid selector: left click=center, right click to extend");
             break;
@@ -775,14 +789,15 @@ public class SelectionCommands {
             player.print("Sphere selector: left click=center, right click to set radius");
             break;
 
+        case "cylinder":
         case "cyl":
             selector = new CylinderRegionSelector(oldSelector);
             player.print("Cylindrical selector: Left click=center, right click to extend.");
             break;
 
+        case "polyhedron":
         case "convex":
         case "hull":
-        case "polyhedron":
             int maxVertices = we.getMaximumPolyhedronPoints(player);
             selector = new ConvexPolyhedralRegionSelector(oldSelector, maxVertices);
             player.print("Convex polyhedral selector: Left click=First vertex, right click to add more.");
