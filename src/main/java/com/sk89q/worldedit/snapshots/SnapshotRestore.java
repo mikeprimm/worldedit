@@ -56,7 +56,7 @@ public class SnapshotRestore {
     /**
      * Edit session.
      */
-    private final EditSession editSession;
+    private EditSession editSession;
     /**
      * Count of the number of missing chunks.
      */
@@ -69,6 +69,17 @@ public class SnapshotRestore {
      * Last error message.
      */
     private String lastErrorMessage;
+
+    /**
+     * Construct the snapshot restore operation.
+     *
+     * @param chunkStore The {@link ChunkStore} to restore from
+     * @param region The {@link Region} to restore to
+     */
+    @Deprecated
+    public SnapshotRestore(ChunkStore chunkStore, Region region) {
+        this(chunkStore, null, region);
+    }
 
     /**
      * Construct the snapshot restore operation.
@@ -123,7 +134,7 @@ public class SnapshotRestore {
     }
 
     private void checkAndAddBlock(Vector pos) {
-        if (editSession.getMask() != null && !editSession.getMask().matches(editSession, pos))
+        if (editSession != null && editSession.getMask() != null && !editSession.getMask().matches(editSession, pos))
             return;
 
         BlockVector2D chunkPos = ChunkStore.toChunk(pos);
@@ -143,6 +154,19 @@ public class SnapshotRestore {
      */
     public int getChunksAffected() {
         return neededChunks.size();
+    }
+
+    /**
+     * Restores to world.
+     *
+     * @param editSession The {@link EditSession} to restore to
+     * @throws MaxChangedBlocksException
+     */
+    @Deprecated
+    public void restore(EditSession editSession)
+            throws MaxChangedBlocksException {
+        this.editSession = editSession;
+        restore();
     }
 
     /**
