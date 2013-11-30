@@ -51,21 +51,16 @@ public class BaseBlock extends Block {
         super(type, data);
     }
 
-    public static BaseBlock wildcard(int type, int data, final int mask) {
-        if (mask == ~0) {
-            return new BaseBlock(type, data);
-        }
+    public static BaseBlock wildcard(int type, int data, int mask) {
+        // Cut both down to 15 bits
+        mask &= 0x7fff;
+        data &= 0x7fff;
 
-        return new BaseBlock(type, data) {
-            @Override
-            public int getMask() {
-                return mask;
-            }
-        };
-    }
-
-    public int getMask() {
-        return ~0;
+        // Merge the mask and data value, inverting the mask,
+        // so the masks's msb ends up as a 1 in the resulting value's msb,
+        // making the value negative.
+        data |= (~mask << 16);
+        return new BaseBlock(type, data);
     }
 
     /**
@@ -168,8 +163,8 @@ public class BaseBlock extends Block {
     }
 
     /**
-     * Checks whether the type ID and data value are equal, after applying masks to the data values.
-     *
+     * Checks if the type is the same, and if data is the same if only data != -1.
+     * 
      * @param o other block
      * @return true if equal
      */
@@ -177,9 +172,42 @@ public class BaseBlock extends Block {
         if (getType() != o.getType()) {
             return false;
         }
+        if (getData() == o.getData()) {
+            return true;
+        }
 
-        final int mask = getMask() & o.getMask();
-        return (getData() & mask) == (o.getData() & mask);
+        if (getData() < 0) {
+            return equalsFuzzy(getData(), o.getData());
+        }
+
+        if (o.getData() < 0) {
+            return equalsFuzzy(o.getData(), getData());
+        }
+
+        return false;
+    }
+
+    private static boolean equalsFuzzy(int data, int otherData) {
+        // -1 means mask==0x0000, data == 0x7fff => everything matches
+        // For performance's sake, let's make a special case anyway :)
+        if (data == -1) {
+            return true;
+        }
+
+        // In order to make equalsFuzzy commutative, no two non-equal negatives can match
+        if (otherData < 0) {
+            return false;
+        }
+
+        // Restore the mask from the inverted high bits
+        int mask = ~data >> 16;
+
+        // Cut both mask and data value down to 15 bits
+        mask &= 0x7fff;
+        data &= 0x7fff;
+
+        // And compare the two data values after applying the mask
+        return (data & mask) == (otherData & mask);
     }
 
     /**
