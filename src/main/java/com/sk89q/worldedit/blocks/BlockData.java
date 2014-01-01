@@ -139,6 +139,9 @@ public final class BlockData {
         case BlockID.IRON_DOOR:
         case BlockID.COCOA_PLANT:
         case BlockID.TRIPWIRE_HOOK:
+        case WesterosBlocks.WB_HALFDOOR_BLOCK_0:    //WesterosBlocks
+        case WesterosBlocks.WB_HALFDOOR_BLOCK_1:    //WesterosBlocks
+        case WesterosBlocks.WB_HALFDOOR_BLOCK_2:    //WesterosBlocks
             int extra = data & ~0x3;
             int withoutFlags = data & 0x3;
             switch (withoutFlags) {
@@ -427,6 +430,9 @@ public final class BlockData {
         case BlockID.IRON_DOOR:
         case BlockID.COCOA_PLANT:
         case BlockID.TRIPWIRE_HOOK:
+        case WesterosBlocks.WB_HALFDOOR_BLOCK_0:    //WesterosBlocks
+        case WesterosBlocks.WB_HALFDOOR_BLOCK_1:    //WesterosBlocks
+        case WesterosBlocks.WB_HALFDOOR_BLOCK_2:    //WesterosBlocks
             int extra = data & ~0x3;
             int withoutFlags = data & 0x3;
             switch (withoutFlags) {
@@ -805,6 +811,9 @@ public final class BlockData {
         case BlockID.COMPARATOR_ON:
         case BlockID.COCOA_PLANT:
         case BlockID.TRIPWIRE_HOOK:
+        case WesterosBlocks.WB_HALFDOOR_BLOCK_0:    //WesterosBlocks
+        case WesterosBlocks.WB_HALFDOOR_BLOCK_1:    //WesterosBlocks
+        case WesterosBlocks.WB_HALFDOOR_BLOCK_2:    //WesterosBlocks
             switch (data & 0x3) {
             case 0:
             case 2:
