@@ -76,7 +76,7 @@ public enum ClothColor {
 
     private final int id;
     private final String name;
-    private final String[] lookupKeys;
+    public final String[] lookupKeys;
 
     static {
         for (ClothColor type : EnumSet.allOf(ClothColor.class)) {

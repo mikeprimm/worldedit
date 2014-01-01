@@ -1,6 +1,11 @@
 package com.sk89q.worldedit.blocks;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.TreeSet;
 
 public class WesterosBlocks {
     public static final int WB_ARROW_SLITS = 2024;
@@ -540,12 +545,82 @@ public class WesterosBlocks {
         new WesterosBlocks(BlockType.WB_BANNER_BLOCK_13, 1, "yellowbannertop");
         new WesterosBlocks(BlockType.WB_WOOD_SLAB_BLOCK_0, 0, "darknorthernwoodslab");
         new WesterosBlocks(BlockType.WB_WOOD_SLAB_BLOCK_0_2, 0, "doubledarknorthernwoodslab");
+        
+        // Build and dump current symbol map
+        HashMap<Integer, List<String>> mapbyID = new HashMap<Integer, List<String>>();
+        HashMap<String, Integer> mapbykey = new HashMap<String, Integer>();
+        for (String k : lookupTable.keySet()) {
+            WesterosBlocks wb = lookupTable.get(k);
+            int id = (wb.blockType.getID() * 32) + wb.data + 1;
+            List<String> lst = mapbyID.get(id);
+            if (lst == null) {
+                lst = new ArrayList<String>();
+                mapbyID.put(id, lst);
+            }
+            lst.add(k);
+            mapbykey.put(k, id);
+        }
+        for (BlockType bt : BlockType.values()) {
+            int id = bt.getID() * 32;
+            List<String> lst = mapbyID.get(id);
+            if (lst == null) {
+                lst = new ArrayList<String>();
+                mapbyID.put(id, lst);
+            }
+            for (String k : bt.lookupKeys) {
+                lst.add(k);
+                mapbykey.put(k, id);
+            }
+        }
+        for (ClothColor cc : ClothColor.values()) {
+            int id = (BlockType.CLOTH.getID() * 32) + cc.getID() + 1;
+            List<String> lst = mapbyID.get(id);
+            if (lst == null) {
+                lst = new ArrayList<String>();
+                mapbyID.put(id, lst);
+            }
+            for (String k : cc.lookupKeys) {
+                lst.add(k);
+                mapbykey.put(k, id);
+            }
+        }
+        FileWriter fw = null;
+        try {
+            fw = new FileWriter("worldedit-keys.txt");
+            TreeSet<Integer> ts = new TreeSet<Integer>(mapbyID.keySet());
+            for (Integer id : ts) {
+                List<String> keys = mapbyID.get(id);
+                fw.write((id / 32) + ":" + (((id%32) == 0)?"*":((id%32)-1)) + " ");
+                for (String k : keys) {
+                    fw.write(" " + k);
+                }
+                fw.write("\n");
+            }
+            fw.write("-------------------------------\n");
+            TreeSet<String> tss = new TreeSet<String>(mapbykey.keySet());
+            for (String k : tss) {
+                Integer id = mapbykey.get(k);
+                fw.write(k + " " + (id / 32) + ":" + (((id%32) == 0)?"*":((id%32)-1)) + "\n");
+            }
+        } catch (IOException iox) {
+        } finally {
+            if (fw != null) {
+                try { fw.close(); } catch (IOException iox) {}
+                fw = null;
+            }
+        }
     }
     
     private WesterosBlocks(BlockType bt, int data, String... lookupKeys) {
         blockType = bt;
         this.data = data;
         for (String k : lookupKeys) {
+            if (BlockType.lookup(k) != null) {
+                System.out.println("WesterosBlocks key '" + k + "' conflicts with BlockType");
+            }
+            if (lookupTable.containsKey(k)) {
+                System.out.println("WesterosBlocks key '" + k + "' has duplicates");
+            }
             lookupTable.put(k, this);
         }
     }

@@ -52,7 +52,7 @@ public enum BlockType {
     GOLD_ORE(BlockID.GOLD_ORE, "Gold ore", "goldore"),
     IRON_ORE(BlockID.IRON_ORE, "Iron ore", "ironore"),
     COAL_ORE(BlockID.COAL_ORE, "Coal ore", "coalore"),
-    LOG(BlockID.LOG, "Log", "log", "tree", "pine", "oak", "birch", "redwood"),
+    LOG(BlockID.LOG, "Log", "log", "tree", "pine", "oak", "birch"/*WesterosCraft , "redwood"*/),
     LEAVES(BlockID.LEAVES, "Leaves", "leaves", "leaf"),
     SPONGE(BlockID.SPONGE, "Sponge", "sponge"),
     GLASS(BlockID.GLASS, "Glass", "glass"),
@@ -90,10 +90,10 @@ public enum BlockType {
     MOB_SPAWNER(BlockID.MOB_SPAWNER, "Mob spawner", "mobspawner", "spawner"),
     WOODEN_STAIRS(BlockID.WOODEN_STAIRS, "Wooden stairs", "woodstair", "woodstairs", "woodenstair", "woodenstairs"),
     CHEST(BlockID.CHEST, "Chest", "chest", "storage", "storagechest"),
-    REDSTONE_WIRE(BlockID.REDSTONE_WIRE, "Redstone wire", "redstone", "redstoneblock"),
+    REDSTONE_WIRE(BlockID.REDSTONE_WIRE, "Redstone wire", "redstone"/*WesterosCraft , "redstoneblock"*/),
     DIAMOND_ORE(BlockID.DIAMOND_ORE, "Diamond ore", "diamondore"),
     DIAMOND_BLOCK(BlockID.DIAMOND_BLOCK, "Diamond block", "diamond", "diamondblock"),
-    WORKBENCH(BlockID.WORKBENCH, "Workbench", "workbench", "table", "craftingtable", "crafting"),
+    WORKBENCH(BlockID.WORKBENCH, "Workbench", "workbench", /*WesterosCraft "table",*/ "craftingtable", "crafting"),
     CROPS(BlockID.CROPS, "Crops", "crops", "crop", "plant", "plants"),
     SOIL(BlockID.SOIL, "Soil", "soil", "farmland"),
     FURNACE(BlockID.FURNACE, "Furnace", "furnace"),
@@ -107,7 +107,7 @@ public enum BlockType {
     LEVER(BlockID.LEVER, "Lever", "lever", "switch", "stonelever", "stoneswitch"),
     STONE_PRESSURE_PLATE(BlockID.STONE_PRESSURE_PLATE, "Stone pressure plate", "stonepressureplate", "stoneplate"),
     IRON_DOOR(BlockID.IRON_DOOR, "Iron Door", "irondoor"),
-    WOODEN_PRESSURE_PLATE(BlockID.WOODEN_PRESSURE_PLATE, "Wooden pressure plate", "woodpressureplate", "woodplate", "woodenpressureplate", "woodenplate", "plate", "pressureplate"),
+    WOODEN_PRESSURE_PLATE(BlockID.WOODEN_PRESSURE_PLATE, "Wooden pressure plate", "woodpressureplate", "woodplate", "woodenpressureplate", /*WesterosCraft "woodenplate",*/ "plate", "pressureplate"),
     REDSTONE_ORE(BlockID.REDSTONE_ORE, "Redstone ore", "redstoneore"),
     GLOWING_REDSTONE_ORE(BlockID.GLOWING_REDSTONE_ORE, "Glowing redstone ore", "glowingredstoneore"),
     REDSTONE_TORCH_OFF(BlockID.REDSTONE_TORCH_OFF, "Redstone torch (off)", "redstonetorchoff", "rstorchoff"),
@@ -118,13 +118,13 @@ public enum BlockType {
     SNOW_BLOCK(BlockID.SNOW_BLOCK, "Snow block", "snowblock"),
     CACTUS(BlockID.CACTUS, "Cactus", "cactus", "cacti"),
     CLAY(BlockID.CLAY, "Clay", "clay"),
-    SUGAR_CANE(BlockID.REED, "Reed", "reed", "cane", "sugarcane", "sugarcanes", "vine", "vines"),
+    SUGAR_CANE(BlockID.REED, "Reed", "reed", "cane", "sugarcane", "sugarcanes"/*WessterosCraft , "vine", "vines"*/),
     JUKEBOX(BlockID.JUKEBOX, "Jukebox", "jukebox", "stereo", "recordplayer"),
     FENCE(BlockID.FENCE, "Fence", "fence"),
     PUMPKIN(BlockID.PUMPKIN, "Pumpkin", "pumpkin"),
     NETHERRACK(BlockID.NETHERRACK, "Netherrack", "redmossycobblestone", "redcobblestone", "redmosstone", "redcobble", "netherstone", "netherrack", "nether", "hellstone"),
-    SOUL_SAND(BlockID.SLOW_SAND, "Soul sand", "slowmud", "mud", "soulsand", "hellmud"),
-    GLOWSTONE(BlockID.LIGHTSTONE, "Glowstone", "brittlegold", "glowstone", "lightstone", "brimstone", "australium"),
+    SOUL_SAND(BlockID.SLOW_SAND, "Soul sand", "slowmud"/*WesterosCraft , "mud"*/, "soulsand", "hellmud"),
+    GLOWSTONE(BlockID.LIGHTSTONE, "Glowstone", "brittlegold", "glowstone"/*WesterosCraft , "lightstone"*/, "brimstone", "australium"),
     PORTAL(BlockID.PORTAL, "Portal", "portal"),
     JACK_O_LANTERN(BlockID.JACKOLANTERN, "Pumpkin (on)", "pumpkinlighted", "pumpkinon", "litpumpkin", "jackolantern"),
     CAKE(BlockID.CAKE_BLOCK, "Cake", "cake", "cakeblock"),
@@ -215,7 +215,7 @@ public enum BlockType {
     WB_BANNER_BLOCK_11(WesterosBlocks.WB_BANNER_BLOCK_11, "Banner 11", "banner11"),
     WB_BANNER_BLOCK_12(WesterosBlocks.WB_BANNER_BLOCK_12, "Banner 12", "banner12"),
     WB_BANNER_BLOCK_13(WesterosBlocks.WB_BANNER_BLOCK_13, "Banner 13", "banner13"),
-    WB_BARS_IRON_BLOCK_0(WesterosBlocks.WB_BARS_IRON_BLOCK_0, "Iron Bars", "ironbars"),
+    WB_BARS_IRON_BLOCK_0(WesterosBlocks.WB_BARS_IRON_BLOCK_0, "Iron Bars", "barsiron"),
     WB_BED_BLOCK_0(WesterosBlocks.WB_BED_BLOCK_0, "Nights Watch Bed", "nightswatchbed"),
     WB_BED_BLOCK_1(WesterosBlocks.WB_BED_BLOCK_1, "Northern Bed", "northernbed"),
     WB_BED_BLOCK_2(WesterosBlocks.WB_BED_BLOCK_2, "Straw Bed", "strawbed"),
@@ -245,15 +245,15 @@ public enum BlockType {
     WB_HOPPER_BLOCK(WesterosBlocks.WB_HOPPER_BLOCK, "Hopper 0", "hopper0"),
     WB_HOPPER_BLOCK_1(WesterosBlocks.WB_HOPPER_BLOCK_1, "Hopper 1", "hopper1"),
     WB_LADDER_BLOCK_0(WesterosBlocks.WB_LADDER_BLOCK_0, "Ladder 0", "ladder0"),
-    WB_LEAVES_BLOCK_0(WesterosBlocks.WB_LEAVES_BLOCK_0, "Leaves 0", "leaves0"),
-    WB_LEAVES_BLOCK_1(WesterosBlocks.WB_LEAVES_BLOCK_1, "Leaves 1", "leaves1"),
-    WB_LEAVES_BLOCK_2(WesterosBlocks.WB_LEAVES_BLOCK_2, "Leaves 2", "leaves2"),
+    WB_LEAVES_BLOCK_0(WesterosBlocks.WB_LEAVES_BLOCK_0, "Leaves 0", "wbleaves0"),
+    WB_LEAVES_BLOCK_1(WesterosBlocks.WB_LEAVES_BLOCK_1, "Leaves 1", "wbleaves1"),
+    WB_LEAVES_BLOCK_2(WesterosBlocks.WB_LEAVES_BLOCK_2, "Leaves 2", "wbleaves2"),
     WB_LIGHT_EMITTING_BLOCKS_0(WesterosBlocks.WB_LIGHT_EMITTING_BLOCKS_0, "Light Emitting 0", "lightemiting0", "light0"),
-    WB_LOG_BLOCK_0(WesterosBlocks.WB_LOG_BLOCK_0, "Log 0", "log0"),
-    WB_LOG_BLOCK_1(WesterosBlocks.WB_LOG_BLOCK_1, "Log 1", "log1"),
-    WB_LOG_BLOCK_2(WesterosBlocks.WB_LOG_BLOCK_2, "Log 2", "log2"),
-    WB_LOG_BLOCK_3(WesterosBlocks.WB_LOG_BLOCK_3, "Log 3", "log3"),
-    WB_LOG_BLOCK_4(WesterosBlocks.WB_LOG_BLOCK_4, "Log 4", "log4"),
+    WB_LOG_BLOCK_0(WesterosBlocks.WB_LOG_BLOCK_0, "Log 0", "wblog0"),
+    WB_LOG_BLOCK_1(WesterosBlocks.WB_LOG_BLOCK_1, "Log 1", "wblog1"),
+    WB_LOG_BLOCK_2(WesterosBlocks.WB_LOG_BLOCK_2, "Log 2", "wblog2"),
+    WB_LOG_BLOCK_3(WesterosBlocks.WB_LOG_BLOCK_3, "Log 3", "wblog3"),
+    WB_LOG_BLOCK_4(WesterosBlocks.WB_LOG_BLOCK_4, "Log 4", "wblog4"),
     WB_METAL_BLOCK_0(WesterosBlocks.WB_METAL_BLOCK_0, "Metal Block", "metal0"),
     WB_METAL_BLOCK_0_STAIR_1(WesterosBlocks.WB_METAL_BLOCK_0_STAIR_1, "Oxidized Iron Stairs", "oxidizedironstairs", "rustedstairs"),
     WB_METAL_BLOCK_0_STAIR_2(WesterosBlocks.WB_METAL_BLOCK_0_STAIR_2, "Oxidized Bronze Stairs", "oxidizedbronzestairs"),
@@ -271,8 +271,8 @@ public enum BlockType {
     WB_RANDOM_SLAB_BLOCK_0_2(WesterosBlocks.WB_RANDOM_SLAB_BLOCK_0_2, "Double Random Slab 0", "doublerandomslab0"),
     WB_RANDOM_SLAB_BLOCK_1(WesterosBlocks.WB_RANDOM_SLAB_BLOCK_1, "Random Slab 1", "randomslab1"),
     WB_RANDOM_SLAB_BLOCK_1_2(WesterosBlocks.WB_RANDOM_SLAB_BLOCK_1_2, "Double Random Slab 1", "doublerandomslab1"),
-    WB_RED_FLOWER_BLOCK_0(WesterosBlocks.WB_RED_FLOWER_BLOCK_0, "Red Flower 0", "redflower0"),
-    WB_RED_FLOWER_BLOCK_1(WesterosBlocks.WB_RED_FLOWER_BLOCK_1, "Red Flower 1", "redflower1"),
+    WB_RED_FLOWER_BLOCK_0(WesterosBlocks.WB_RED_FLOWER_BLOCK_0, "Red Flower 0", "wbredflower0"),
+    WB_RED_FLOWER_BLOCK_1(WesterosBlocks.WB_RED_FLOWER_BLOCK_1, "Red Flower 1", "wbredflower1"),
     WB_RED_MUSHROOM_BLOCK_0(WesterosBlocks.WB_RED_MUSHROOM_BLOCK_0, "Red Mushrooms", "redmushroom0"),
     WB_ROPE_BLOCK_0(WesterosBlocks.WB_ROPE_BLOCK_0, "Horizontal Rope", "horizontalrope", "hrope"),
     WB_ROPE_BLOCK_1(WesterosBlocks.WB_ROPE_BLOCK_1, "Horizontal Net", "horizontalnet", "hnet"),
@@ -310,12 +310,12 @@ public enum BlockType {
     WB_THATCH_STAIR_1(WesterosBlocks.WB_THATCH_STAIR_1, "Thatch Dark Fur Stairs", "thatchdarkfurstairs"),
     WB_THIN_LOG_0(WesterosBlocks.WB_THIN_LOG_0, "Thin Log", "thinlog"),
     WB_TORCH_BLOCK_0(WesterosBlocks.WB_TORCH_BLOCK_0, "Torch Block", "torchblock"),
-    WB_UNSHADED_GRASS_BLOCK_0(WesterosBlocks.WB_UNSHADED_GRASS_BLOCK_0, "Unshaded Grass", "unshadedgrass"),
+    WB_UNSHADED_GRASS_BLOCK_0(WesterosBlocks.WB_UNSHADED_GRASS_BLOCK_0, "Unshaded Grass", "wbunshadedgrass"),
     WB_WOOD_COLOURS(WesterosBlocks.WB_WOOD_COLOURS, "Colored Wood", "colouredwood", "coloredwood"),
     WB_WOOD_SLAB_BLOCK_0(WesterosBlocks.WB_WOOD_SLAB_BLOCK_0, "Wood Slab 0", "woodslabl0"),
     WB_WOOD_SLAB_BLOCK_0_2(WesterosBlocks.WB_WOOD_SLAB_BLOCK_0_2, "Double Wood Slab 0", "doublewoodslabl0"),
-    WB_YELLOW_FLOWER_BLOCK_0(WesterosBlocks.WB_YELLOW_FLOWER_BLOCK_0, "Yellow Flower 0", "yellowflower0"),
-    WB_YELLOW_FLOWER_BLOCK_1(WesterosBlocks.WB_YELLOW_FLOWER_BLOCK_1, "Yellow Flower 1", "yellowflower1");
+    WB_YELLOW_FLOWER_BLOCK_0(WesterosBlocks.WB_YELLOW_FLOWER_BLOCK_0, "Yellow Flower 0", "wbyellowflower0"),
+    WB_YELLOW_FLOWER_BLOCK_1(WesterosBlocks.WB_YELLOW_FLOWER_BLOCK_1, "Yellow Flower 1", "wbyellowflower1");
     // WesterosCraft END
 
     /**
@@ -329,12 +329,15 @@ public enum BlockType {
 
     private final int id;
     private final String name;
-    private final String[] lookupKeys;
+    public final String[] lookupKeys;
 
     static {
         for (BlockType type : EnumSet.allOf(BlockType.class)) {
             ids.put(type.id, type);
             for (String key : type.lookupKeys) {
+                if (lookup.containsKey(key)) {
+                    System.out.println("BlockType key '" + key + "' has duplicates!");
+                }
                 lookup.put(key, type);
             }
         }
