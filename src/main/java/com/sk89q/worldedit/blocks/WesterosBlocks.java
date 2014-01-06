@@ -114,6 +114,7 @@ public class WesterosBlocks {
     public static final int WB_STONE_SLAB_BLOCK_1_2 = 2046;
     public static final int WB_STONE_SLAB_STAIR_0 = 2075;
     public static final int WB_STONE_WALL_BLOCK_0 = 2010;
+    public static final int WB_STONE_WALL_BLOCK_1 = 2120;
     public static final int WB_THATCH_STAIR_0 = 2073;
     public static final int WB_THATCH_STAIR_1 = 2074;
     public static final int WB_THIN_LOG_0 = 2022;
@@ -296,6 +297,7 @@ public class WesterosBlocks {
         new WesterosBlocks(BlockType.WB_ARROW_SLITS, 10, "vividsandstonearrowslit");
         new WesterosBlocks(BlockType.WB_ARROW_SLITS, 11, "terracottaarrowslit");
         new WesterosBlocks(BlockType.WB_ARROW_SLITS, 12, "stoneslabarrowslit");
+        new WesterosBlocks(BlockType.WB_ARROW_SLITS, 13, "stormlandsbrickarrowslit");
         new WesterosBlocks(BlockType.WB_STONE_BLOCK_0, 0, "darkbrownsandstone");
         new WesterosBlocks(BlockType.WB_STONE_BLOCK_0, 1, "vividsandstone");
         new WesterosBlocks(BlockType.WB_STONE_BLOCK_0, 2, "vividmossysandstone");
@@ -424,9 +426,11 @@ public class WesterosBlocks {
         new WesterosBlocks(BlockType.WB_RANDOM_SLAB_BLOCK_1, 0, "grainfloursack");
         new WesterosBlocks(BlockType.WB_RANDOM_SLAB_BLOCK_1, 1, "cutgrainfloursack");
         new WesterosBlocks(BlockType.WB_RANDOM_SLAB_BLOCK_1, 2, "snowslab");
+        new WesterosBlocks(BlockType.WB_RANDOM_SLAB_BLOCK_1, 3, "muddysnowslab");
         new WesterosBlocks(BlockType.WB_RANDOM_SLAB_BLOCK_1_2, 0, "doublegrainfloursack");
         new WesterosBlocks(BlockType.WB_RANDOM_SLAB_BLOCK_1_2, 1, "doublecutgrainfloursack");
         new WesterosBlocks(BlockType.WB_RANDOM_SLAB_BLOCK_1_2, 2, "doublesnowslab");
+        new WesterosBlocks(BlockType.WB_RANDOM_SLAB_BLOCK_1_2, 3, "doublemuddysnowslab");
         new WesterosBlocks(BlockType.WB_FENCE_BLOCK_1, 0, "cobblestonefence");
         new WesterosBlocks(BlockType.WB_FENCE_BLOCK_1, 1, "mossycobblestonefence");
         new WesterosBlocks(BlockType.WB_FENCE_BLOCK_1, 2, "reinforcedoakfence");
@@ -506,8 +510,9 @@ public class WesterosBlocks {
         new WesterosBlocks(BlockType.WB_STONE_BLOCK_2, 10, "stormlandscobblestone");
         new WesterosBlocks(BlockType.WB_STONE_BLOCK_2, 11, "stormlandsbrick");
         new WesterosBlocks(BlockType.WB_STONE_BLOCK_2, 12, "stormlandslargebrick");
-        new WesterosBlocks(BlockType.WB_STONE_BLOCK_2, 13, "stormlandssmalllightbrick");
+        new WesterosBlocks(BlockType.WB_STONE_BLOCK_2, 13, "stormlandsdarkcobblestone");
         new WesterosBlocks(BlockType.WB_STONE_BLOCK_2, 14, "lightstone");
+        new WesterosBlocks(BlockType.WB_STONE_BLOCK_2, 15, "stormlandsmossycobblestone");
         new WesterosBlocks(BlockType.WB_SOUND_BLOCKS_0, 0, "forestsounds");
         new WesterosBlocks(BlockType.WB_SOUND_BLOCKS_0, 1, "farmsounds");
         new WesterosBlocks(BlockType.WB_LOG_BLOCK_3, 0, "mossysprucelog");
@@ -545,7 +550,17 @@ public class WesterosBlocks {
         new WesterosBlocks(BlockType.WB_BANNER_BLOCK_13, 1, "yellowbannertop");
         new WesterosBlocks(BlockType.WB_WOOD_SLAB_BLOCK_0, 0, "darknorthernwoodslab");
         new WesterosBlocks(BlockType.WB_WOOD_SLAB_BLOCK_0_2, 0, "doubledarknorthernwoodslab");
-        
+        new WesterosBlocks(BlockType.WB_STONE_WALL_BLOCK_1, 0, "vividsandstonewall");
+        new WesterosBlocks(BlockType.WB_STONE_WALL_BLOCK_1, 2, "vividmossysandstonewall");
+        new WesterosBlocks(BlockType.WB_STONE_WALL_BLOCK_1, 3, "vividdarksandstonewall");
+        new WesterosBlocks(BlockType.WB_STONE_WALL_BLOCK_1, 4, "darkbricksandstonewall");
+        new WesterosBlocks(BlockType.WB_STONE_WALL_BLOCK_1, 5, "monochromesandstonewall");
+        new WesterosBlocks(BlockType.WB_STONE_WALL_BLOCK_1, 6, "monochromemossysandstonewall");
+        new WesterosBlocks(BlockType.WB_STONE_WALL_BLOCK_1, 7, "monochromedarksandstonewall");
+        new WesterosBlocks(BlockType.WB_STONE_WALL_BLOCK_1, 8, "terracottawall");
+        new WesterosBlocks(BlockType.WB_STONE_WALL_BLOCK_1, 9, "terracottaengravedwall");
+        new WesterosBlocks(BlockType.WB_STONE_WALL_BLOCK_1, 10, "darkbrownsandstonewall");
+
         // Build and dump current symbol map
         HashMap<Integer, List<String>> mapbyID = new HashMap<Integer, List<String>>();
         HashMap<String, Integer> mapbykey = new HashMap<String, Integer>();

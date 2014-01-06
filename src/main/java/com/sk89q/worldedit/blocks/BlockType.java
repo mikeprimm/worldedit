@@ -306,6 +306,7 @@ public enum BlockType {
     WB_STONE_SLAB_BLOCK_1_2(WesterosBlocks.WB_STONE_SLAB_BLOCK_1_2, "Double Stone Slab 1", "doublestoneslab1"),
     WB_STONE_SLAB_STAIR_0(WesterosBlocks.WB_STONE_SLAB_STAIR_0, "Stone Slab Stair", "stoneslabstair"),
     WB_STONE_WALL_BLOCK_0(WesterosBlocks.WB_STONE_WALL_BLOCK_0, "Stone Wall 0", "stonewall0"),
+    WB_STONE_WALL_BLOCK_1(WesterosBlocks.WB_STONE_WALL_BLOCK_1, "Stone Wall 1", "stonewall1"),
     WB_THATCH_STAIR_0(WesterosBlocks.WB_THATCH_STAIR_0, "Thatch Light Fur Stairs", "thatchlightfurstairs"),
     WB_THATCH_STAIR_1(WesterosBlocks.WB_THATCH_STAIR_1, "Thatch Dark Fur Stairs", "thatchdarkfurstairs"),
     WB_THIN_LOG_0(WesterosBlocks.WB_THIN_LOG_0, "Thin Log", "thinlog"),
