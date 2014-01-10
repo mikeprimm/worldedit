@@ -60,6 +60,7 @@ import com.sk89q.worldedit.blocks.MobSpawnerBlock;
 import com.sk89q.worldedit.blocks.NoteBlock;
 import com.sk89q.worldedit.blocks.SignBlock;
 import com.sk89q.worldedit.blocks.SkullBlock;
+import com.sk89q.worldedit.blocks.WesterosBlocks;
 import com.sk89q.worldedit.commands.BiomeCommands;
 import com.sk89q.worldedit.commands.ChunkCommands;
 import com.sk89q.worldedit.commands.ClipboardCommands;
@@ -409,9 +410,25 @@ public class WorldEdit {
             }
         }
 
+        // WesterosCraft START
+        if (blockId == -1 && blockType == null) {
+            // Maybe it's a WesterosBlocks block
+            WesterosBlocks wb = WesterosBlocks.lookup(testID);
+            if (wb != null) {
+                blockType = wb.blockType;
+                if (wb.data >= 0) {
+                    data = wb.data;
+                }
+            }
+        }
+        // WesterosCraft END
+
         if (blockId == -1 && blockType == null) {
             // Maybe it's a cloth
             ClothColor col = ClothColor.lookup(testID);
+            if (col == null) {
+                throw new UnknownItemException(arg);
+            }
 
             if (col != null) {
                 blockType = BlockType.CLOTH;
