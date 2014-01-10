@@ -33,10 +33,7 @@ import static org.junit.Assert.*;
 public class BlockDataTest {
     @Test
     public void testRotateFlip() {
-        for (int type = 0; type < 256; ++type) {
-            if (type == BlockID.HAY_BLOCK) {
-                continue; // not monotonous
-            }
+        for (int type = 0; type < 4096; ++type) {
             for (int data = 0; data < 16; ++data) {
                 final String message = type + "/" + data;
 

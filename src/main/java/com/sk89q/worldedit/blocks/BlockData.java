@@ -39,6 +39,7 @@ public final class BlockData {
         case BlockID.TORCH:
         case BlockID.REDSTONE_TORCH_OFF:
         case BlockID.REDSTONE_TORCH_ON:
+        case WesterosBlocks.WB_TORCH_BLOCK_0:   //WesterosCraft
             switch (data) {
             case 1: return 3;
             case 2: return 4;
@@ -48,6 +49,9 @@ public final class BlockData {
             break;
 
         case BlockID.MINECART_TRACKS:
+        case WesterosBlocks.WB_ROPE_BLOCK_0:    //WesterosCraft
+        case WesterosBlocks.WB_ROPE_BLOCK_1:    //WesterosCraft
+        case WesterosBlocks.WB_ROPE_BLOCK_2:    //WesterosCraft
             switch (data) {
             case 6: return 7;
             case 7: return 8;
@@ -79,6 +83,33 @@ public final class BlockData {
         case BlockID.BIRCH_WOOD_STAIRS:
         case BlockID.JUNGLE_WOOD_STAIRS:
         case BlockID.QUARTZ_STAIRS:
+        case WesterosBlocks.WB_BEDROCK_STAIRS:          //WesterosCraft
+        case WesterosBlocks.WB_COBBLE_DARK_STAIRS:      //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_1:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_2:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_3:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_4:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_5:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_6:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_7:   //WesterosCraft
+        case WesterosBlocks.WB_NORTHERN_WOOD_STAIRS:    //WesterosCraft
+        case WesterosBlocks.WB_ORANGE_BRICK_STAIR_0:    //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_0:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_1:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_2:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_3:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_4:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_5:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_8:   //WesterosCraft
+        case WesterosBlocks.WB_SNOW_STAIRS:             //WesterosCraft
+        case WesterosBlocks.WB_STONE_BLOCK_1_STAIR_0:   //WesterosCraft
+        case WesterosBlocks.WB_STONE_BLOCK_1_STAIR_1:   //WesterosCraft;
+        case WesterosBlocks.WB_STONE_BLOCK_1_STAIR_2:   //WesterosCraft
+        case WesterosBlocks.WB_STONE_BLOCK_1_STAIR_3:   //WesterosCraft
+        case WesterosBlocks.WB_STONE_BLOCK_1_STAIR_4:   //WesterosCraft
+        case WesterosBlocks.WB_STONE_SLAB_STAIR_0:      //WesterosCraft
+        case WesterosBlocks.WB_THATCH_STAIR_0:          //WesterosCraft
+        case WesterosBlocks.WB_THATCH_STAIR_1:          //WesterosCraft
             switch (data) {
             case 0: return 2;
             case 1: return 3;
@@ -159,6 +190,11 @@ public final class BlockData {
             break;
 
         case BlockID.LOG:
+        case WesterosBlocks.WB_LOG_BLOCK_0:     //WesterosCraft
+        case WesterosBlocks.WB_LOG_BLOCK_1:     //WesterosCraft
+        case WesterosBlocks.WB_LOG_BLOCK_2:     //WesterosCraft
+        case WesterosBlocks.WB_LOG_BLOCK_3:     //WesterosCraft
+        case WesterosBlocks.WB_LOG_BLOCK_4:     //WesterosCraft
             if (data >= 4 && data <= 11) data ^= 0xc;
             break;
 
@@ -213,13 +249,66 @@ public final class BlockData {
         case BlockID.ANVIL:
             return data ^ 0x1;
 
-        case BlockID.HAY_BLOCK:
-            if (data == 4) return 8;
-            else if (data == 8) return 4;
-            else return 0; // sanitize extraneous data values since hay blocks are weird
+        case BlockID.BED:
+        case WesterosBlocks.WB_BED_BLOCK_0:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_1:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_2:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_3:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_4:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_5:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_6:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_7:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_8:         //WesterosCraft
+            return data & ~0x3 | (data + 1) & 0x3;
 
+        case BlockID.HEAD:
+            switch (data) {
+                case 2: return 5;
+                case 3: return 4;
+                case 4: return 2;
+                case 5: return 3;
+            }
+        //WesterosCraft START
+            break;
+        case WesterosBlocks.WB_CUBOID_BLOCK_2:  // cuboid-ne
+            return (data & 0x7) | (data ^ 0x8);
+        case WesterosBlocks.WB_CUBOID_BLOCK_0:  // cuboid-nsew
+        case WesterosBlocks.WB_CUBOID_BLOCK_1:  // cuboid-nsew
+        case WesterosBlocks.WB_BANNER_BLOCK_0:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_1:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_2:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_3:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_4:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_5:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_6:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_7:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_8:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_9:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_10: // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_11: // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_12: // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_13: // cuboid-nsew-stack
+            return (data & 0x3) | ((data + 4) & 0xC);
+        case WesterosBlocks.WB_PISTON_BLOCK_0:  // cuboid-nsewud
+            if ((data >> 1) < 4) {
+                return (data & 0x1) | ((data + 2) & 0x6);
+            }
+            return data;
+        case WesterosBlocks.WB_LADDER_BLOCK_0:  // ladder
+            switch (data >> 2) {
+                case 3:
+                    return (data & 0x3) | 0;
+                case 2:
+                    return (data & 0x3) | 4;
+                case 0:
+                    return (data & 0x3) | 8;
+                case 1:
+                    return (data & 0x3) | 12;
+            }
+            break;
+        //WesterosCraft END
         }
-
+        
         return data;
     }
 
@@ -237,6 +326,7 @@ public final class BlockData {
         case BlockID.TORCH:
         case BlockID.REDSTONE_TORCH_OFF:
         case BlockID.REDSTONE_TORCH_ON:
+        case WesterosBlocks.WB_TORCH_BLOCK_0:   //WesterosCraft
             switch (data) {
             case 3: return 1;
             case 4: return 2;
@@ -246,6 +336,9 @@ public final class BlockData {
             break;
 
         case BlockID.MINECART_TRACKS:
+        case WesterosBlocks.WB_ROPE_BLOCK_0:    //WesterosCraft
+        case WesterosBlocks.WB_ROPE_BLOCK_1:    //WesterosCraft
+        case WesterosBlocks.WB_ROPE_BLOCK_2:    //WesterosCraft
             switch (data) {
             case 7: return 6;
             case 8: return 7;
@@ -278,6 +371,33 @@ public final class BlockData {
         case BlockID.BIRCH_WOOD_STAIRS:
         case BlockID.JUNGLE_WOOD_STAIRS:
         case BlockID.QUARTZ_STAIRS:
+        case WesterosBlocks.WB_BEDROCK_STAIRS:          //WesterosCraft
+        case WesterosBlocks.WB_COBBLE_DARK_STAIRS:      //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_1:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_2:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_3:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_4:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_5:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_6:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_7:   //WesterosCraft
+        case WesterosBlocks.WB_NORTHERN_WOOD_STAIRS:    //WesterosCraft
+        case WesterosBlocks.WB_ORANGE_BRICK_STAIR_0:    //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_0:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_1:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_2:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_3:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_4:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_5:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_8:   //WesterosCraft
+        case WesterosBlocks.WB_SNOW_STAIRS:             //WesterosCraft
+        case WesterosBlocks.WB_STONE_BLOCK_1_STAIR_0:   //WesterosCraft
+        case WesterosBlocks.WB_STONE_BLOCK_1_STAIR_1:   //WesterosCraft;
+        case WesterosBlocks.WB_STONE_BLOCK_1_STAIR_2:   //WesterosCraft
+        case WesterosBlocks.WB_STONE_BLOCK_1_STAIR_3:   //WesterosCraft
+        case WesterosBlocks.WB_STONE_BLOCK_1_STAIR_4:   //WesterosCraft
+        case WesterosBlocks.WB_STONE_SLAB_STAIR_0:      //WesterosCraft
+        case WesterosBlocks.WB_THATCH_STAIR_0:          //WesterosCraft
+        case WesterosBlocks.WB_THATCH_STAIR_1:          //WesterosCraft
             switch (data) {
             case 2: return 0;
             case 3: return 1;
@@ -357,6 +477,11 @@ public final class BlockData {
             break;
 
         case BlockID.LOG:
+        case WesterosBlocks.WB_LOG_BLOCK_0:     //WesterosCraft
+        case WesterosBlocks.WB_LOG_BLOCK_1:     //WesterosCraft
+        case WesterosBlocks.WB_LOG_BLOCK_2:     //WesterosCraft
+        case WesterosBlocks.WB_LOG_BLOCK_3:     //WesterosCraft
+        case WesterosBlocks.WB_LOG_BLOCK_4:     //WesterosCraft
             if (data >= 4 && data <= 11) data ^= 0xc;
             break;
 
@@ -410,11 +535,64 @@ public final class BlockData {
         case BlockID.ANVIL:
             return data ^ 0x1;
 
-        case BlockID.HAY_BLOCK:
-            if (data == 4) return 8;
-            else if (data == 8) return 4;
-            else return 0;
+        case BlockID.BED:
+        case WesterosBlocks.WB_BED_BLOCK_0:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_1:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_2:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_3:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_4:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_5:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_6:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_7:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_8:         //WesterosCraft
+            return data & ~0x3 | (data - 1) & 0x3;
 
+        case BlockID.HEAD:
+            switch (data) {
+                case 2: return 4;
+                case 3: return 5;
+                case 4: return 3;
+                case 5: return 2;
+            }
+        //WesterosCraft START
+            break;
+        case WesterosBlocks.WB_CUBOID_BLOCK_2:  // cuboid-ne
+            return (data & 0x7) | (data ^ 0x8);
+        case WesterosBlocks.WB_CUBOID_BLOCK_0:  // cuboid-nsew
+        case WesterosBlocks.WB_CUBOID_BLOCK_1:  // cuboid-nsew
+        case WesterosBlocks.WB_BANNER_BLOCK_0:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_1:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_2:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_3:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_4:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_5:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_6:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_7:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_8:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_9:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_10: // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_11: // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_12: // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_13: // cuboid-nsew-stack
+            return (data & 0x3) | ((data + 12) & 0xC);
+        case WesterosBlocks.WB_PISTON_BLOCK_0:  // cuboid-nsewud
+            if ((data >> 1) < 4) {
+                return (data & 0x1) | ((data + 6) & 0x6);
+            }
+            return data;
+        case WesterosBlocks.WB_LADDER_BLOCK_0:  // ladder
+            switch (data >> 2) {
+                case 0:
+                    return (data & 0x3) | 12;
+                case 1:
+                    return (data & 0x3) | 8;
+                case 2:
+                    return (data & 0x3) | 0;
+                case 3:
+                    return (data & 0x3) | 4;
+            }
+            break;
+        //WesterosCraft END
         }
 
         return data;
@@ -462,7 +640,8 @@ public final class BlockData {
         case BlockID.TORCH:
         case BlockID.REDSTONE_TORCH_OFF:
         case BlockID.REDSTONE_TORCH_ON:
-            if (data > 4) break;
+        case WesterosBlocks.WB_TORCH_BLOCK_0:   //WesterosCraft
+            if (data < 1 || data > 4) break;
             /* FALL-THROUGH */
 
         case BlockID.LEVER:
@@ -477,6 +656,9 @@ public final class BlockData {
             break;
 
         case BlockID.MINECART_TRACKS:
+        case WesterosBlocks.WB_ROPE_BLOCK_0:    //WesterosCraft
+        case WesterosBlocks.WB_ROPE_BLOCK_1:    //WesterosCraft
+        case WesterosBlocks.WB_ROPE_BLOCK_2:    //WesterosCraft
             switch (data) {
             case 6: return data + flipX + flipZ * 3;
             case 7: return data - flipX + flipZ;
@@ -515,6 +697,33 @@ public final class BlockData {
         case BlockID.BIRCH_WOOD_STAIRS:
         case BlockID.JUNGLE_WOOD_STAIRS:
         case BlockID.QUARTZ_STAIRS:
+        case WesterosBlocks.WB_BEDROCK_STAIRS:          //WesterosCraft
+        case WesterosBlocks.WB_COBBLE_DARK_STAIRS:      //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_1:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_2:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_3:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_4:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_5:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_6:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_7:   //WesterosCraft
+        case WesterosBlocks.WB_NORTHERN_WOOD_STAIRS:    //WesterosCraft
+        case WesterosBlocks.WB_ORANGE_BRICK_STAIR_0:    //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_0:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_1:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_2:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_3:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_4:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_5:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_8:   //WesterosCraft
+        case WesterosBlocks.WB_SNOW_STAIRS:             //WesterosCraft
+        case WesterosBlocks.WB_STONE_BLOCK_1_STAIR_0:   //WesterosCraft
+        case WesterosBlocks.WB_STONE_BLOCK_1_STAIR_1:   //WesterosCraft;
+        case WesterosBlocks.WB_STONE_BLOCK_1_STAIR_2:   //WesterosCraft
+        case WesterosBlocks.WB_STONE_BLOCK_1_STAIR_3:   //WesterosCraft
+        case WesterosBlocks.WB_STONE_BLOCK_1_STAIR_4:   //WesterosCraft
+        case WesterosBlocks.WB_STONE_SLAB_STAIR_0:      //WesterosCraft
+        case WesterosBlocks.WB_THATCH_STAIR_0:          //WesterosCraft
+        case WesterosBlocks.WB_THATCH_STAIR_1:          //WesterosCraft
             data ^= flipY << 2;
             switch (data) {
             case 0:
@@ -689,6 +898,88 @@ public final class BlockData {
             }
             break;
 
+        case BlockID.BED:
+        case WesterosBlocks.WB_BED_BLOCK_0:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_1:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_2:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_3:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_4:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_5:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_6:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_7:         //WesterosCraft
+        case WesterosBlocks.WB_BED_BLOCK_8:         //WesterosCraft
+            switch (data & 0x3) {
+            case 0:
+            case 2:
+                return data ^ flipZ << 1;
+            case 1:
+            case 3:
+                return data ^ flipX << 1;
+            }
+            break;
+
+        case BlockID.HEAD:
+            switch (data) {
+                case 2:
+                case 3:
+                    return data ^ flipZ;
+                case 4:
+                case 5:
+                    return data ^ flipX;
+            }
+            break;
+        //WesterosCraft START
+        case WesterosBlocks.WB_CUBOID_BLOCK_2:  // cuboid-ne
+            return data;
+        case WesterosBlocks.WB_CUBOID_BLOCK_0:  // cuboid-nsew
+        case WesterosBlocks.WB_CUBOID_BLOCK_1:  // cuboid-nsew
+        case WesterosBlocks.WB_BANNER_BLOCK_0:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_1:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_2:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_3:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_4:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_5:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_6:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_7:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_8:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_9:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_10: // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_11: // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_12: // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_13: // cuboid-nsew-stack
+            switch (data >> 2) {
+                case 0:
+                case 2:
+                    return data ^ (flipX << 3);
+                case 1:
+                case 3:
+                    return data ^ (flipZ << 3);
+            }
+            break;
+        case WesterosBlocks.WB_PISTON_BLOCK_0:  // cuboid-nsewud
+            switch (data >> 1) {
+                case 0:
+                case 2:
+                    return data ^ (flipX << 2);
+                case 1:
+                case 3:
+                    return data ^ (flipZ << 2);
+                case 4:
+                case 5:
+                    return data ^ (flipY << 1);
+            }
+            return data;
+        case WesterosBlocks.WB_LADDER_BLOCK_0: // ladder
+            switch (data >> 2) {
+                case 0:
+                case 1:
+                    return data ^ (flipZ << 2);
+                case 2:
+                case 3:
+                    return data ^ (flipX << 2);
+            }
+            break;
+       //WesterosCraft END
         }
 
         return data;
@@ -714,6 +1005,11 @@ public final class BlockData {
 
         // special case here, going to use "forward" for type and "backward" for orientation
         case BlockID.LOG:
+        case WesterosBlocks.WB_LOG_BLOCK_0:     //WesterosCraft
+        case WesterosBlocks.WB_LOG_BLOCK_1:     //WesterosCraft
+        case WesterosBlocks.WB_LOG_BLOCK_2:     //WesterosCraft
+        case WesterosBlocks.WB_LOG_BLOCK_3:     //WesterosCraft
+        case WesterosBlocks.WB_LOG_BLOCK_4:     //WesterosCraft
             if (increment == -1) {
                 store = data & 0x3; // copy bottom (type) bits
                 return mod((data & ~0x3) + 4, 16) | store; // switch orientation with top bits and reapply bottom bits;
@@ -754,6 +1050,7 @@ public final class BlockData {
         case BlockID.TORCH:
         case BlockID.REDSTONE_TORCH_ON:
         case BlockID.REDSTONE_TORCH_OFF:
+        case WesterosBlocks.WB_TORCH_BLOCK_0:   //WesterosCraft
             if (data < 1 || data > 4) return -1;
             return mod((data - 1 + increment), 4) + 1;
 
@@ -767,6 +1064,33 @@ public final class BlockData {
         case BlockID.BIRCH_WOOD_STAIRS:
         case BlockID.JUNGLE_WOOD_STAIRS:
         case BlockID.QUARTZ_STAIRS:
+        case WesterosBlocks.WB_BEDROCK_STAIRS:          //WesterosCraft
+        case WesterosBlocks.WB_COBBLE_DARK_STAIRS:      //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_1:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_2:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_3:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_4:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_5:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_6:   //WesterosCraft
+        case WesterosBlocks.WB_METAL_BLOCK_0_STAIR_7:   //WesterosCraft
+        case WesterosBlocks.WB_NORTHERN_WOOD_STAIRS:    //WesterosCraft
+        case WesterosBlocks.WB_ORANGE_BRICK_STAIR_0:    //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_0:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_1:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_2:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_3:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_4:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_5:   //WesterosCraft
+        case WesterosBlocks.WB_SANDSTONE_BLOCK_0_STAIR_8:   //WesterosCraft
+        case WesterosBlocks.WB_SNOW_STAIRS:             //WesterosCraft
+        case WesterosBlocks.WB_STONE_BLOCK_1_STAIR_0:   //WesterosCraft
+        case WesterosBlocks.WB_STONE_BLOCK_1_STAIR_1:   //WesterosCraft;
+        case WesterosBlocks.WB_STONE_BLOCK_1_STAIR_2:   //WesterosCraft
+        case WesterosBlocks.WB_STONE_BLOCK_1_STAIR_3:   //WesterosCraft
+        case WesterosBlocks.WB_STONE_BLOCK_1_STAIR_4:   //WesterosCraft
+        case WesterosBlocks.WB_STONE_SLAB_STAIR_0:      //WesterosCraft
+        case WesterosBlocks.WB_THATCH_STAIR_0:          //WesterosCraft
+        case WesterosBlocks.WB_THATCH_STAIR_1:          //WesterosCraft
             if (data > 7) return -1;
             return mod((data + increment), 8);
 
@@ -844,6 +1168,9 @@ public final class BlockData {
             return mod(((data & 0x3) + increment), 4) | store;
 
         case BlockID.MINECART_TRACKS:
+        case WesterosBlocks.WB_ROPE_BLOCK_0:    //WesterosCraft
+        case WesterosBlocks.WB_ROPE_BLOCK_1:    //WesterosCraft
+        case WesterosBlocks.WB_ROPE_BLOCK_2:    //WesterosCraft
             if (data < 6 || data > 9) return -1;
             return mod((data - 6 + increment), 4) + 6;
 
@@ -861,6 +1188,31 @@ public final class BlockData {
                 data = prevClothColor(data);
             }
             return data;
+        //WesterosCraft START
+        case WesterosBlocks.WB_CUBOID_BLOCK_2:  // cuboid-ne
+            return (data & 0x7) | (data ^ 0x8);
+        case WesterosBlocks.WB_CUBOID_BLOCK_0:  // cuboid-nsew
+        case WesterosBlocks.WB_CUBOID_BLOCK_1:  // cuboid-nsew
+        case WesterosBlocks.WB_BANNER_BLOCK_0:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_1:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_2:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_3:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_4:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_5:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_6:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_7:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_8:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_9:  // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_10: // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_11: // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_12: // cuboid-nsew-stack
+        case WesterosBlocks.WB_BANNER_BLOCK_13: // cuboid-nsew-stack
+            return (data & 0x3) | ((data + 16 + (increment * 4)) & 0xC);
+        case WesterosBlocks.WB_PISTON_BLOCK_0:  // cuboid-nsewud
+            return (data & 0x1) | ((((data >> 1) + 6 + increment) % 6) << 1);
+        case WesterosBlocks.WB_LADDER_BLOCK_0:  // ladder
+            return (data & 3) | ((((data >> 2) + increment + 4) % 4) << 2);
+        //WesterosCraft END
 
         default:
             return -1;
